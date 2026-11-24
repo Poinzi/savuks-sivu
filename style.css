@@ -143,3 +143,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 .empty{color:var(--mute)}
 .pagehead{padding-bottom:0}
 @media(max-width:860px){.news{grid-template-columns:minmax(0,1fr)}}
+
+/* Tietosuojaseloste */
+.doc .wrap>*{max-width:760px}
+.doc h2{font-size:22px;margin:32px 0 8px}
+.doc h2:first-child{margin-top:0}
+.doc a{color:var(--redink)}
+.doc .updated{color:var(--mute);font-size:14px;margin-top:32px}
+footer a{color:inherit}

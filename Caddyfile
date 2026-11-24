@@ -1,0 +1,31 @@
+{
+	admin off
+	auto_https off
+}
+
+:{$PORT:8080} {
+	root * /srv
+	encode gzip
+
+	# Vanhan WordPress-sivuston osoitteet uusille sivuille (pysyvä ohjaus)
+	@palvelut path /palovaroittimet /palovaroittimet/* /vaestonsuojat /vaestonsuojat/* /faq /faq/* /pikapalopostit /pikapalopostit/* /savunpoisto /savunpoisto/* /services /services/* /about /about/*
+	redir @palvelut /#palvelut 301
+	@yhteys path /contact /contact/*
+	redir @yhteys /#yhteystiedot 301
+	@ajank path /testimonials /testimonials/*
+	redir @ajank /ajankohtaista.html 301
+	@isannoitsijat path /tietopankki /tietopankki/*
+	redir @isannoitsijat /#toimintatapa 301
+	@wp path /wp-admin* /wp-login.php /wp-content/* /feed /feed/* /xmlrpc.php
+	redir @wp / 301
+
+	header /uutiset.json Cache-Control "no-cache"
+	header /*.html Cache-Control "no-cache"
+	header -Server
+
+	try_files {path} {path}.html {path}/index.html
+	file_server
+	handle_errors {
+		redir * / 302
+	}
+}
