@@ -235,9 +235,10 @@
         <div><label for="asunnot">Asuntoja (noin)</label><input id="asunnot" name="asunnot" inputmode="numeric"></div>
       </div>
       <div><label for="viesti">Kohde ja lisätiedot</label><textarea id="viesti" name="viesti" placeholder="Taloyhtiön nimi ja osoite, toivottu ajankohta"></textarea></div>
-      <button type="submit">Lähetä tarjouspyyntö</button>
-      <p id="ok" role="status"></p>
-      <p class="note">Lomake avaa sähköpostiohjelmasi valmiilla viestillä osoitteeseen jari.mattila@savuks.fi. Lue <a href="tietosuoja.html">tietosuojaseloste</a>.</p>
+      <div class="hp" aria-hidden="true"><label for="sivusto">Jätä tyhjäksi</label><input id="sivusto" name="sivusto" tabindex="-1" autocomplete="off"></div>
+      <button type="submit" id="laheta">Lähetä tarjouspyyntö</button>
+      <p id="lomake-tila" role="status"></p>
+      <p class="note">Tarjouspyyntö lähtee sähköpostina suoraan Savuksille. Lue <a href="tietosuoja.html">tietosuojaseloste</a>.</p>
     </form>
   </div>
 </section>
@@ -266,23 +267,33 @@
 
   document.getElementById("y").textContent = new Date().getFullYear();
 
-  const f = document.getElementById("f"), ok = document.getElementById("ok");
-  f.addEventListener("submit", (e) => {
+  const f = document.getElementById("f"), ok = document.getElementById("lomake-tila"), btn = document.getElementById("laheta");
+  const v = (id) => document.getElementById(id).value.trim();
+  const ilmoita = (teksti, virhe, linkki) => {
+    ok.style.display = "block";
+    ok.style.background = virhe ? "#4a1c1f" : ""; ok.style.color = virhe ? "#ffd9d9" : "";
+    ok.textContent = teksti;
+    if (linkki) { const a = document.createElement("a"); a.href = linkki; a.textContent = " Lähetä sähköpostilla."; a.style.color = "inherit"; ok.append(a); }
+  };
+  const mailto = () => {
+    const body = ["Nimi: " + v("nimi"), "Puhelin: " + v("puh"), "Sähköposti: " + v("email"),
+      "Palvelu: " + v("palvelu"), "Asuntoja: " + v("asunnot"), "", v("viesti")].join("\n");
+    return "mailto:jari.mattila@savuks.fi?subject=" + encodeURIComponent("Tarjouspyyntö: " + v("palvelu")) + "&body=" + encodeURIComponent(body);
+  };
+  f.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const v = (id) => document.getElementById(id).value.trim();
-    if (!v("nimi") || !v("email")) {
-      ok.style.display = "block"; ok.style.background = "#4a1c1f"; ok.style.color = "#ffd9d9";
-      ok.textContent = "Täytä nimi ja sähköposti.";
-      return;
+    if (!v("nimi") || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("email"))) { ilmoita("Täytä nimi ja toimiva sähköpostiosoite.", true); return; }
+    btn.disabled = true; btn.textContent = "Lähetetään…";
+    try {
+      const r = await fetch("/api/tarjous", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nimi: v("nimi"), email: v("email"), puh: v("puh"), palvelu: v("palvelu"), asunnot: v("asunnot"), viesti: v("viesti"), sivusto: v("sivusto") }) });
+      const d = await r.json().catch(() => ({}));
+      if (r.ok && d.ok) { f.reset(); ilmoita("Kiitos! Tarjouspyyntö on lähetetty. Vastaamme pian."); }
+      else ilmoita((d.virhe || "Lähetys epäonnistui.") + " Voit myös soittaa +358 44 366 5638.", true, r.status >= 500 ? mailto() : null);
+    } catch (err) {
+      ilmoita("Lähetys epäonnistui. Voit myös soittaa +358 44 366 5638.", true, mailto());
     }
-    const body = [
-      "Nimi: " + v("nimi"), "Puhelin: " + v("puh"), "Sähköposti: " + v("email"),
-      "Palvelu: " + v("palvelu"), "Asuntoja: " + v("asunnot"), "", v("viesti")
-    ].join("\n");
-    const url = "mailto:jari.mattila@savuks.fi?subject=" + encodeURIComponent("Tarjouspyyntö: " + v("palvelu")) + "&body=" + encodeURIComponent(body);
-    ok.style.display = "block"; ok.style.background = ""; ok.style.color = "";
-    ok.textContent = "Sähköpostiohjelmasi avautuu. Jos se ei avaudu, lähetä tiedot osoitteeseen jari.mattila@savuks.fi.";
-    window.location.href = url;
+    btn.disabled = false; btn.textContent = "Lähetä tarjouspyyntö";
   });
 }
 </script>

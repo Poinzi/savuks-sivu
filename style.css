@@ -110,7 +110,7 @@ textarea{min-height:120px;resize:vertical}
 form button{min-height:50px;border:0;border-radius:10px;background:linear-gradient(180deg,#d4202d,#b3101c);box-shadow:0 2px 4px rgba(0,0,0,.4),0 8px 22px rgba(193,18,31,.35);color:#fff;font:600 16px Inter,sans-serif;cursor:pointer}
 form button:hover{background:#a50f1a}
 .note{font-size:14px;color:#a9a8a6;margin:0}
-#ok{display:none;background:#1f3a2a;color:#d7f5e1;border-radius:10px;padding:12px 14px;font-size:15px}
+#lomake-tila{display:none;background:#1f3a2a;color:#d7f5e1;border-radius:10px;padding:12px 14px;font-size:15px}
 
 footer{background:var(--deep);color:#a9a8a6;border-top:1px solid #34343a;font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:22px max(5vw,16px)}
@@ -191,3 +191,6 @@ legend{font:700 19px Archivo,Inter,sans-serif;padding:0 8px}
 @media(prefers-reduced-motion:reduce){.progress i{transition:none}}
 #lista{background:none;border:0;box-shadow:none;padding:0;display:block;border-radius:0}
 .promo b{color:#fff}
+
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+form button:disabled{opacity:.7;cursor:wait}
