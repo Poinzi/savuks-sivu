@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Savuks Oy</title>
+<meta name="description" content="Savuks Oy – taloyhtiöiden paloturvallisuus: palovaroittimet, väestönsuojat, käsisammuttimet, pikapalopostit, savunpoistot, turvavalot ja turvallisuuskartoitukset. Etelä- ja Länsi-Suomi.">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAYFBMVEX/oaE1NTUsJCR/AAC/Pz//RkYAAAD+MTH/AAD+VVX+ODj+RET+WFj/fX3/aGj+QUH////+SEj/PT3+QED+Ojr+VVX/Ojr/TEz8ZGT/ubn/Ly//PT39U1P/jIwAcXEkHx9muPMkAAAAIHRSTlMKE0UCBBIA/QEG0HAuAxeQAVUEsY1KrjspBvtwbwoJODQHqakAAAEuSURBVHjafZMHcoQwDEWdJskyGFjDtmyy979lXHARsDEzDIPe6H8VK2gPwbKAFr/UBtA8+fdLwMfOOIkcW4AGxAX6fzMgWhpfeaDex3FoRCSgwQQAuyoigB66GG9TKCFw4wTwT6m1BU4w4Hq6IyAbCMcUDXUY98BpC4g4zjtAxveAhqmNoyEJUG5APhN8SCA3oJT50EQV2AogK++iAWgsCVyyYMo8lHRg0tdS56Fii79Lfy5RgaMM1Azzmh/IViPX6CIB65AsNW7wEk20EjPoz6ahFchVdqQJLB9JJOWwJWEm99SLvgD+bzDBYZX7YrMpE0YKid3aO3auWdw8LO/ivF4G9t264/D7LsdtggT558tpYOTb21MsTMgRknrDVxgdW9ivXJfvJPUPC/ny/QEGJB8dtfHs4QAAAABJRU5ErkJggg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="data:image/png;base64,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" alt="Savuks Oy" width="500" height="144"></a>
+    <nav aria-label="Päävalikko">
+      <a href="#palvelut">Palvelut</a>
+      <a href="#toimintatapa">Toimintatapa</a>
+      <a href="ajankohtaista.html">Ajankohtaista</a>
+      <a href="#yhteystiedot">Yhteystiedot</a>
+      <a class="cta" href="#yhteystiedot">Pyydä tarjous</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="band hero">
+  <div class="wrap">
+    <div>
+      <h1>Palovaroittimet ja väestönsuoja kuntoon koko taloyhtiössä</h1>
+      <p class="lead">Savuks Oy hoitaa taloyhtiön paloturvallisuuden palovaroittimista väestönsuojaan. Yksi toimittaja kaikkiin lakisääteisiin tarkastuksiin, ja isännöitsijä saa selkeän raportin jokaisesta kohteesta.</p>
+      <div class="btns">
+        <a class="btn p" href="#yhteystiedot">Pyydä tarjous</a>
+        <a class="btn" href="tel:+358443665638">Soita +358 44 366 5638</a>
+      </div>
+      <div class="facts">
+        <div><b>Taloyhtiöille</b>isännöitsijän kautta</div>
+        <div><b>Raportti</b>jokaisesta asunnosta</div>
+        <div><b>Etelä- ja Länsi-Suomi</b>toiminta-alue</div>
+      </div>
+    </div>
+
+    <div class="fig" role="img" aria-label="Kerrostalon poikkileikkaus: jokaisessa asunnossa tarkastettu palovaroitin, kellarissa väestönsuoja">
+      <svg viewBox="0 0 480 480">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c1121f" stop-opacity=".10"/><stop offset="1" stop-color="#c1121f" stop-opacity="0"/></linearGradient>
+          <g id="det"><circle r="9" fill="var(--wall)" stroke="var(--ink)" stroke-width="2"/><circle r="3" fill="#c1121f"/></g>
+          <g id="ok"><circle r="10" fill="#c1121f"/><path d="M-4.5 0l3 3 6-6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+        </defs>
+        <rect x="0" y="0" width="480" height="480" rx="24" fill="url(#sky)"/>
+        <!-- maa -->
+        <rect x="0" y="352" width="480" height="128" fill="var(--wall2)"/>
+        <rect x="0" y="350" width="480" height="4" fill="var(--ink)" opacity=".75"/>
+        <!-- talon varjo ja runko -->
+        <rect x="92" y="78" width="306" height="276" fill="var(--ink)" opacity=".10" transform="translate(10 6)"/>
+        <path d="M80 92 L240 40 L400 92 Z" fill="var(--ink)"/>
+        <rect x="88" y="92" width="304" height="260" fill="var(--wall)" stroke="var(--ink)" stroke-width="4"/>
+        <!-- välipohjat ja seinät -->
+        <g stroke="var(--ink)" stroke-width="3">
+          <line x1="88" y1="179" x2="392" y2="179"/><line x1="88" y1="266" x2="392" y2="266"/>
+          <line x1="190" y1="92" x2="190" y2="352"/><line x1="290" y1="92" x2="290" y2="352"/>
+        </g>
+        <!-- ikkunat -->
+        <g id="wins" fill="var(--wall2)" stroke="var(--ink)" stroke-width="1.5"></g>
+        <!-- palovaroittimet -->
+        <g id="dets"></g>
+        <!-- kellari / väestönsuoja -->
+        <rect x="88" y="354" width="304" height="96" fill="var(--deep)"/>
+        <rect x="88" y="354" width="304" height="96" fill="none" stroke="var(--ink)" stroke-width="4"/>
+        <rect x="214" y="374" width="52" height="64" rx="4" fill="#3a3a40" stroke="#c1121f" stroke-width="3"/>
+        <circle cx="240" cy="406" r="11" fill="none" stroke="#c1121f" stroke-width="3"/>
+        <path d="M240 395v22M229 406h22" stroke="#c1121f" stroke-width="2.5"/>
+        <text x="110" y="412" fill="#f1f0ee" font-family="Archivo,sans-serif" font-weight="700" font-size="15">Väestönsuoja</text>
+        <text x="290" y="412" fill="#c9c7c3" font-family="Inter,sans-serif" font-size="13">72 h valmius</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Luvat ja jäsenyydet">
+  <div class="wrap">
+      <div class="badge"><img src="logot/spek.png" alt="SPEK" onerror="this.remove()"><span><b>SPEK</b>Suomen Pelastusalan Keskusjärjestö</span></div>
+      <div class="badge"><img src="logot/sppl.png" alt="SPPL" onerror="this.remove()"><span><b>SPPL</b>Suomen Palopäällystöliitto</span></div>
+      <div class="badge"><img src="logot/tukes.png" alt="Tukes" onerror="this.remove()"><span><b>Tukes</b>Turvallisuus- ja kemikaalivirasto</span></div>
+      <div class="badge"><img src="logot/elinkeinolupa.png" alt="Turvallisuusalan elinkeinolupa" onerror="this.remove()"><span><b>Turvallisuusalan elinkeinolupa</b>Poliisihallitus</span></div>
+  </div>
+</section>
+
+<section class="band svc" id="palvelut">
+  <div class="wrap">
+    <h2>Palvelut</h2>
+    <p class="sub">Kaikki taloyhtiön lakisääteiset paloturvallisuustarkastukset yhdeltä toimittajalta.</p>
+    <div class="grid3">
+      <article class="card">
+        <h3>Palovaroittimet</h3>
+        <p>Tarkastus asunto asunnolta ja uusien asennus.</p>
+        <ul><li>Sähkökäyttöiset ja akulliset varoittimet</li><li>Asuntokohtainen raportti isännöitsijälle</li></ul>
+      </article>
+      <article class="card">
+        <h3>Väestönsuojat</h3>
+        <p>Suoja käyttövalmiiksi 72 tunnissa.</p>
+        <ul><li>Käyttöönottosuunnitelma</li><li>Huolto, tarkastus ja tiiveyskoe</li><li>Tarvikkeet ja tarvikeinventaario</li></ul>
+      </article>
+      <article class="card">
+        <h3>Käsisammuttimet</h3>
+        <p>Kaikkien merkkien ja mallien tarkastus.</p>
+        <ul><li>Määräaikaistarkastukset</li><li>Uusien sammuttimien toimitus</li></ul>
+      </article>
+      <article class="card">
+        <h3>Pikapalopostit</h3>
+        <p>Huolto korjaamalla, ei turhaan vaihtamalla.</p>
+        <ul><li>Vuositarkastus ja koeponnistus</li><li>Letkujen ja tiivisteiden vaihto</li><li>Uudet palopostit, letkut ja suuttimet</li></ul>
+      </article>
+      <article class="card">
+        <h3>Savunpoistot</h3>
+        <p>Poistumisreitit savuttomiksi.</p>
+        <ul><li>Luukkujen kartoitus ja asennus</li><li>Vuosihuollot, testaus ja korjaukset</li></ul>
+      </article>
+      <article class="card">
+        <h3>Turvavalot</h3>
+        <p>Reitit näkyvät myös sähkökatkossa.</p>
+        <ul><li>Tarkastus</li><li>Huolto</li></ul>
+      </article>
+      <article class="card">
+        <h3>Turvallisuuskartoitus</h3>
+        <p>Kiinteistön riskit ja puutteet yhdellä käynnillä.</p>
+        <ul><li>Lakisääteisten velvoitteiden läpikäynti</li><li>Raportti korjattavista asioista</li></ul>
+      </article>
+      <article class="card">
+        <h3>Pelastussuunnitelma</h3>
+        <p>Lakisääteinen suunnitelma asukkaille ja käyttäjille.</p>
+        <ul><li>Laadinta ja päivitys</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band svc" id="ajankohtaista" style="box-shadow:none;padding-top:0">
+  <div class="wrap">
+    <h2>Ajankohtaista</h2>
+    <p class="sub">Poimintoja pelastustoimen tiedotteista taloyhtiöille.</p>
+    <div class="news" data-uutiset="3"><p class="empty">Ladataan…</p></div>
+    <a class="morelink" href="ajankohtaista.html">Kaikki jutut →</a>
+  </div>
+</section>
+
+<section class="band" id="toimintatapa">
+  <div class="wrap">
+    <h2>Näin tarkastus etenee</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Sovitaan ajankohta</h3><p>Isännöitsijä tilaa tarkastuksen, ja sovimme päivän, jolloin käymme asunnoissa.</p></div>
+      <div class="step"><div class="n">2</div><h3>Tarkastetaan kohde</h3><p>Käymme asunnot läpi yksi kerrallaan ja kirjaamme havainnot suoraan järjestelmään.</p></div>
+      <div class="step"><div class="n">3</div><h3>Raportti isännöitsijälle</h3><p>Isännöitsijä saa raportin, jossa jokainen asunto ja havainto on eritelty.</p></div>
+    </div>
+    <div class="who">
+      <div><b>Isännöitsijälle</b><span>Kaikki lakisääteiset tarkastukset yhdeltä toimittajalta ja raportti, jonka voi viedä suoraan hallitukselle.</span></div>
+      <div><b>Hallitukselle</b><span>Tieto siitä, että taloyhtiön paloturvallisuus on tarkastettu ja kirjattu.</span></div>
+      <div><b>Asukkaille</b><span>Nopea käynti sovittuna päivänä ja toimiva palovaroitin kotona.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band contact" id="yhteystiedot">
+  <div class="wrap">
+    <div>
+      <h2>Pyydä tarjous</h2>
+      <p style="margin-top:16px">Kerro kohteen osoite ja asuntojen määrä, niin palaamme asiaan.</p>
+      <ul class="cl">
+        <li><span>Puhelin</span><a href="tel:+358443665638">+358 44 366 5638</a></li>
+        <li><span>Sähköposti</span><a href="mailto:jari.mattila@savuks.fi">jari.mattila@savuks.fi</a></li>
+        <li><span>Verkossa</span><a href="https://www.savuks.fi">www.savuks.fi</a></li>
+        <li><span>Y-tunnus</span>3465682-5</li>
+      </ul>
+    </div>
+    <form id="f" novalidate>
+      <div class="row2">
+        <div><label for="nimi">Nimi</label><input id="nimi" name="nimi" autocomplete="name" required></div>
+        <div><label for="puh">Puhelin</label><input id="puh" name="puh" type="tel" autocomplete="tel"></div>
+      </div>
+      <div><label for="email">Sähköposti</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+      <div class="row2">
+        <div><label for="palvelu">Palvelu</label>
+          <select id="palvelu" name="palvelu">
+            <option>Palovaroittimet</option>
+            <option>Väestönsuojat</option>
+            <option>Käsisammuttimet</option>
+            <option>Pikapalopostit</option>
+            <option>Savunpoistot</option>
+            <option>Turvavalot</option>
+            <option>Turvallisuuskartoitus</option>
+            <option>Pelastussuunnitelma</option>
+            <option>Useampi palvelu</option>
+          </select></div>
+        <div><label for="asunnot">Asuntoja (noin)</label><input id="asunnot" name="asunnot" inputmode="numeric"></div>
+      </div>
+      <div><label for="viesti">Kohde ja lisätiedot</label><textarea id="viesti" name="viesti" placeholder="Taloyhtiön nimi ja osoite, toivottu ajankohta"></textarea></div>
+      <button type="submit">Lähetä tarjouspyyntö</button>
+      <p id="ok" role="status"></p>
+      <p class="note">Lomake avaa sähköpostiohjelmasi valmiilla viestillä osoitteeseen jari.mattila@savuks.fi.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y">2026</span> Savuks Oy · Y-tunnus 3465682-5</span>
+    <span>jari.mattila@savuks.fi · www.savuks.fi</span>
+  </div>
+</footer>
+
+<script>
+{
+  const NS = "http://www.w3.org/2000/svg";
+  const cols = [139, 240, 341], rows = [92, 179, 266];
+  const wins = document.getElementById("wins"), dets = document.getElementById("dets");
+  let w = "", d = "", i = 0;
+  for (const y of rows) for (const x of cols) {
+    w += `<rect x="${x - 30}" y="${y + 38}" width="24" height="32" rx="2"/><rect x="${x + 6}" y="${y + 38}" width="24" height="32" rx="2"/>`;
+    d += `<g transform="translate(${x} ${y + 14})"><circle r="16" fill="#c1121f" opacity=".25" class="pulse" style="animation-delay:${(i * 0.27).toFixed(2)}s"/><use href="#det"/></g>`;
+    d += `<g transform="translate(${x + 30} ${y + 18})"><use href="#ok"/></g>`;
+    i++;
+  }
+  wins.innerHTML = w; dets.innerHTML = d;
+
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  const f = document.getElementById("f"), ok = document.getElementById("ok");
+  f.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const v = (id) => document.getElementById(id).value.trim();
+    if (!v("nimi") || !v("email")) {
+      ok.style.display = "block"; ok.style.background = "#4a1c1f"; ok.style.color = "#ffd9d9";
+      ok.textContent = "Täytä nimi ja sähköposti.";
+      return;
+    }
+    const body = [
+      "Nimi: " + v("nimi"), "Puhelin: " + v("puh"), "Sähköposti: " + v("email"),
+      "Palvelu: " + v("palvelu"), "Asuntoja: " + v("asunnot"), "", v("viesti")
+    ].join("\n");
+    const url = "mailto:jari.mattila@savuks.fi?subject=" + encodeURIComponent("Tarjouspyyntö: " + v("palvelu")) + "&body=" + encodeURIComponent(body);
+    ok.style.display = "block"; ok.style.background = ""; ok.style.color = "";
+    ok.textContent = "Sähköpostiohjelmasi avautuu. Jos se ei avaudu, lähetä tiedot osoitteeseen jari.mattila@savuks.fi.";
+    window.location.href = url;
+  });
+}
+</script>
+<script src="uutiset.js"></script>
+</body>
+</html>
