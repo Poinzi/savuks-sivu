@@ -17,6 +17,10 @@
 - [Pikapalopostit](https://www.savuks.fi/pikapalopostit.html): tarkastus, letkujen koeponnistus ja korjaukset (sovitaan tilaajan kanssa), uudet palopostit
 - [Kaikki palvelut](https://www.savuks.fi/#palvelut): myös savunpoistojen huolto, turvavalojen tarkastus, turvallisuuskartoitus ja pelastussuunnitelma
 
+## Palvelualue
+
+- [Taloyhtiöiden paloturvallisuus Turun seudulla](https://www.savuks.fi/turun-seutu.html): Turku, Kaarina, Raisio, Naantali, Lieto, Rusko, Masku ja Paimio; asuntokohtainen palovaroitinraportti, tiiveyskoe ja pöytäkirja
+
 ## Hyödyllistä taloyhtiöille
 
 - [Usein kysyttyä](https://www.savuks.fi/#ukk): palovaroitinvastuu, palovaroittimien määrä, tarkastusvälit, väestönsuojat, käsisammuttimet, pelastussuunnitelma
