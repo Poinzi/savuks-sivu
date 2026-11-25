@@ -6,15 +6,15 @@
 - Yhteyshenkilö: Jari Mattila, jari.mattila@savuks.fi, +358 44 366 5638
 - Verkkosivu: https://www.savuks.fi
 - Toiminta-alue: Etelä- ja Länsi-Suomi (erityisesti Varsinais-Suomi)
-- Pätevyydet: sähkötöiden luvat (myös sähköverkkoon kytkettyjen palovaroittimien asennus), Tukesin käsisammuttimien huollon pätevyys
+- Pätevyydet: sähkötöiden luvat (myös sähköverkkoon kytkettyjen palovaroittimien asennus), Tukesin rekisteröimä käsisammutinliike (vastuuhenkilö Jari Mattila)
 - Tarjouspyynnöt: lomake osoitteessa https://www.savuks.fi/#yhteystiedot tai puhelin
 
 ## Palvelut
 
 - [Palovaroittimien tarkastus ja asennus](https://www.savuks.fi/palovaroittimet.html): tarkastus asunto asunnolta, sähköverkkoon kytkettyjen ja akullisten varoittimien asennus, asuntokohtainen raportti isännöitsijälle
-- [Väestönsuojat](https://www.savuks.fi/vaestonsuojat.html): käyttöönottosuunnitelma (72 tuntia), huolto ja tarkastus, tiiveyskoe, tarvikkeet ja inventaario
-- [Käsisammuttimet](https://www.savuks.fi/kasisammuttimet.html): kaikkien merkkien määräaikaistarkastukset ja huollot, uusien sammuttimien toimitus
-- [Pikapalopostit](https://www.savuks.fi/pikapalopostit.html): vuositarkastus, letkujen koeponnistus, letkujen ja tiivisteiden vaihto, uudet palopostit
+- [Väestönsuojat](https://www.savuks.fi/vaestonsuojat.html): laitteiden tarkastus ja huolto (tarkastuspöytäkirja), tiiveyskoe, käyttöönottosuunnitelma (72 tuntia), tarvikkeet ja inventaario – tilattavissa yhdessä tai erikseen
+- [Käsisammuttimet](https://www.savuks.fi/kasisammuttimet.html): kaikkien merkkien määräaikaistarkastukset ja huollot, uusien sammuttimien toimitus (Tukesin rekisteröimä käsisammutinliike)
+- [Pikapalopostit](https://www.savuks.fi/pikapalopostit.html): tarkastus, letkujen koeponnistus ja korjaukset (sovitaan tilaajan kanssa), uudet palopostit
 - [Kaikki palvelut](https://www.savuks.fi/#palvelut): myös savunpoistojen huolto, turvavalojen tarkastus, turvallisuuskartoitus ja pelastussuunnitelma
 
 ## Hyödyllistä taloyhtiöille

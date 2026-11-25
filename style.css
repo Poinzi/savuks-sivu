@@ -226,3 +226,19 @@ h1,h2,h3{overflow-wrap:break-word;hyphens:auto}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .crumbs a{padding:0;display:inline!important;border-radius:0;background:none!important;font-weight:400;font-size:14.5px}
 .crumbs{display:block}
+
+/* Tilattavat työt -taulukko ja leveä asettelu */
+.split-wide{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(28px,4vw,48px)}
+.orders{width:100%;border-collapse:collapse;margin-top:16px;background:var(--bg);border-radius:14px;overflow:hidden;box-shadow:var(--sh1)}
+.orders th,.orders td{text-align:left;vertical-align:top;padding:14px 16px;border-top:1px solid var(--line)}
+.orders thead th{border-top:0;background:var(--panel);font:700 15px Archivo,Inter,sans-serif}
+.orders td:last-child{color:var(--ink)}
+.orders td{color:var(--mute)}
+.orders td b{color:var(--ink)}
+@media(max-width:700px){
+  .orders thead{display:none}
+  .orders tr{display:block;border-top:1px solid var(--line);padding:8px 0}
+  .orders tr:first-child{border-top:0}
+  .orders td{display:block;border:0;padding:4px 16px}
+  .orders td::before{content:attr(data-l);display:block;font-size:13px;color:var(--mute);font-weight:600}
+}
