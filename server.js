@@ -22,7 +22,7 @@ const MAIL_TO = process.env.MAIL_TO || "jari.mattila@savuks.fi";
 // ---------- Staattiset tiedostot ----------
 const FILES = ["index.html", "ajankohtaista.html", "tietosuoja.html", "tarkistuslista.html",
   "palovaroittimet.html", "vaestonsuojat.html", "kasisammuttimet.html", "pikapalopostit.html", "turun-seutu.html", "style.css",
-  "uutiset.js", "uutiset.json", "sitemap.xml", "robots.txt", "llms.txt", "og-kuva.png", "fonts/archivo.woff2", "fonts/inter.woff2"];
+  "uutiset.js", "lahde.js", "uutiset.json", "sitemap.xml", "robots.txt", "llms.txt", "og-kuva.png", "fonts/archivo.woff2", "fonts/inter.woff2"];
 const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8", ".xml": "application/xml; charset=utf-8", ".txt": "text/plain; charset=utf-8",
   ".png": "image/png", ".woff2": "font/woff2", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".svg": "image/svg+xml", ".webp": "image/webp" };
@@ -144,6 +144,8 @@ function handleTarjous(req, res) {
     if (clean(d.sivusto, 200)) return json(res, 200, { ok: true });      // roskapostiansa: ei lähetetä
     const f = { nimi: oneLine(d.nimi, 120), email: oneLine(d.email, 160), puh: oneLine(d.puh, 40),
       palvelu: oneLine(d.palvelu, 80), asunnot: oneLine(d.asunnot, 20), viesti: clean(d.viesti, 4000) };
+    const gclid = /^[A-Za-z0-9_-]{10,200}$/.test(String(d.gclid || "")) ? d.gclid : "";
+    const lahde = gclid ? "Google Ads" : "sivusto";
     if (!f.nimi || !/^[^\s@<>()]+@[^\s@<>()]+\.[^\s@<>()]+$/.test(f.email))
       return json(res, 400, { ok: false, virhe: "Täytä nimi ja toimiva sähköpostiosoite." });
     if (limited(ip)) return json(res, 429, { ok: false, virhe: "Liian monta lähetystä. Yritä hetken päästä uudelleen tai soita." });
@@ -151,13 +153,14 @@ function handleTarjous(req, res) {
     const text = [
       "Uusi tarjouspyyntö verkkosivulta www.savuks.fi", "",
       `Nimi:       ${f.nimi}`, `Sähköposti: ${f.email}`, `Puhelin:    ${f.puh || "-"}`,
-      `Palvelu:    ${f.palvelu || "-"}`, `Asuntoja:   ${f.asunnot || "-"}`, "",
+      `Palvelu:    ${f.palvelu || "-"}`, `Asuntoja:   ${f.asunnot || "-"}`,
+      `Lähde:      ${lahde}`, ...(gclid ? [`GCLID:      ${gclid}`] : []), "",
       "Kohde ja lisätiedot:", f.viesti || "-", "",
       "Vastaa tähän viestiin, niin vastaus menee suoraan asiakkaalle.",
     ].join("\n");
     try {
       await smtpSend({ from: SMTP.user, to: MAIL_TO, replyTo: f.email, subject: `Tarjouspyyntö: ${f.palvelu || "palvelu"} – ${f.nimi}`, text });
-      console.log(`tarjouspyyntö lähetetty (${f.palvelu})`);
+      console.log(`tarjouspyyntö lähetetty (${f.palvelu}, lähde: ${lahde})`);
       json(res, 200, { ok: true });
     } catch (e) {
       console.error("lähetys epäonnistui:", e.message);
