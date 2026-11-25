@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="/style.css">
 <style>
 .prep-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1rem; margin-block: 1rem; }
-.prep-fields label { display: grid; gap: .25rem; }
-.prep-fields input { width: 100%; min-height: 2.75rem; padding: .5rem; font: inherit; }
+.prep-fields label { display: grid; gap: .25rem; color: var(--ink); }
+.prep-fields input { width: 100%; min-height: 2.75rem; padding: .5rem; font: inherit; background: var(--bg); color: var(--ink); border: 1px solid var(--line); box-shadow: none; }
 .notice { margin: 1.5rem 0; padding: 1.25rem; border: 1px solid #aaa; overflow-wrap: anywhere; }
 .prep-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
 @media print {
@@ -37,7 +37,7 @@
 <section class="band pagehead">
   <div class="wrap">
     <nav class="crumbs" aria-label="Murupolku"><a href="/">Etusivu</a> › <a href="/palovaroittimet.html">Palovaroittimet</a></nav>
-    <h1>Palovaroitintarkastuksen asukastiedote ja muistilista</h1>
+    <h1>Palovaroitin&shy;tarkastuksen asukastiedote ja muistilista</h1>
     <p class="lead">Valmistele taloyhtiön palovaroitinkierros. Täytä tiedot ja tulosta asukastiedote tai tallenna se PDF-tiedostoksi selaimen tulostusvalikosta.</p>
   </div>
 </section>
@@ -94,6 +94,8 @@
       document.getElementById("t-" + field).textContent = printable || "________________";
     }
     const params = new URLSearchParams({ palvelu: "Palovaroittimet" });
+    const gclid = new URLSearchParams(location.search).get("gclid");
+    if (gclid && /^[A-Za-z0-9_-]{10,200}$/.test(gclid)) params.set("gclid", gclid);
     if (countField.value && countField.validity.valid) params.set("asunnot", countField.value);
     if (dateField.value) params.set("toivepaiva", dateField.value);
     offer.href = "/?" + params + "#yhteystiedot";
