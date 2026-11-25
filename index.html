@@ -294,7 +294,7 @@
     btn.disabled = true; btn.textContent = "Lähetetään…";
     try {
       const r = await fetch("/api/tarjous", { method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nimi: v("nimi"), email: v("email"), puh: v("puh"), palvelu: v("palvelu"), asunnot: v("asunnot"), viesti: v("viesti"), sivusto: v("sivusto") }) });
+        body: JSON.stringify({ nimi: v("nimi"), email: v("email"), puh: v("puh"), palvelu: v("palvelu"), asunnot: v("asunnot"), viesti: v("viesti"), sivusto: v("sivusto"), gclid: new URLSearchParams(location.search).get("gclid") || "" }) });
       const d = await r.json().catch(() => ({}));
       if (r.ok && d.ok) { f.reset(); ilmoita("Kiitos! Tarjouspyyntösi on lähetetty. Otamme yhteyttä antamaasi sähköpostiosoitteeseen tai puhelinnumeroon."); }
       else ilmoita((d.virhe || "Lähetys epäonnistui.") + " Voit myös soittaa +358 44 366 5638.", true, r.status >= 500 ? mailto() : null);
@@ -306,5 +306,6 @@
 }
 </script>
 <script src="uutiset.js"></script>
+<script src="lahde.js" defer></script>
 </body>
 </html>
