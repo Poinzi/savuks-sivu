@@ -21,7 +21,7 @@ const MAIL_TO = process.env.MAIL_TO || "jari.mattila@savuks.fi";
 
 // ---------- Staattiset tiedostot ----------
 const FILES = ["index.html", "ajankohtaista.html", "tietosuoja.html", "tarkistuslista.html",
-  "palovaroittimet.html", "vaestonsuojat.html", "kasisammuttimet.html", "pikapalopostit.html", "style.css",
+  "palovaroittimet.html", "vaestonsuojat.html", "kasisammuttimet.html", "pikapalopostit.html", "turun-seutu.html", "style.css",
   "uutiset.js", "uutiset.json", "sitemap.xml", "robots.txt", "llms.txt", "og-kuva.png", "fonts/archivo.woff2", "fonts/inter.woff2"];
 const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8", ".xml": "application/xml; charset=utf-8", ".txt": "text/plain; charset=utf-8",
