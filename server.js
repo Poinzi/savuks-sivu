@@ -20,14 +20,19 @@ const SMTP = {
 const MAIL_TO = process.env.MAIL_TO || "jari.mattila@savuks.fi";
 
 // ---------- Staattiset tiedostot ----------
-const FILES = ["index.html", "ajankohtaista.html", "tietosuoja.html", "tarkistuslista.html", "style.css",
-  "uutiset.js", "uutiset.json", "sitemap.xml", "robots.txt", "og-kuva.png"];
+const FILES = ["index.html", "ajankohtaista.html", "tietosuoja.html", "tarkistuslista.html",
+  "palovaroittimet.html", "vaestonsuojat.html", "kasisammuttimet.html", "pikapalopostit.html", "style.css",
+  "uutiset.js", "uutiset.json", "sitemap.xml", "robots.txt", "llms.txt", "og-kuva.png", "fonts/archivo.woff2", "fonts/inter.woff2"];
 const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8", ".xml": "application/xml; charset=utf-8", ".txt": "text/plain; charset=utf-8",
-  ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".svg": "image/svg+xml", ".webp": "image/webp" };
+  ".png": "image/png", ".woff2": "font/woff2", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".svg": "image/svg+xml", ".webp": "image/webp" };
 
 const REDIRECTS = [
-  [/^\/(palovaroittimet|vaestonsuojat|faq|pikapalopostit|savunpoisto|services|about)(\/.*)?$/, "/#palvelut"],
+  [/^\/palovaroittimet\/.*$/, "/palovaroittimet.html"],
+  [/^\/vaestonsuojat\/.*$/, "/vaestonsuojat.html"],
+  [/^\/pikapalopostit\/.*$/, "/pikapalopostit.html"],
+  [/^\/(faq|kasisammuttimet)(\/.*)?$/, "/kasisammuttimet.html"],
+  [/^\/(savunpoisto|services|about)(\/.*)?$/, "/#palvelut"],
   [/^\/contact(\/.*)?$/, "/#yhteystiedot"],
   [/^\/testimonials(\/.*)?$/, "/ajankohtaista.html"],
   [/^\/tietopankki(\/.*)?$/, "/#toimintatapa"],
@@ -47,11 +52,11 @@ function sendFile(req, res, rel) {
   const full = path.join(ROOT, rel);
   if (!full.startsWith(ROOT + path.sep)) return notFound(res);
   fs.readFile(full, (err, buf) => {
-    if (err) return rel.startsWith("logot/") ? notFound(res) : redirect(res, "/", 302);
+    if (err) return /^(logot|fonts)\//.test(rel) || rel.endsWith(".txt") ? notFound(res) : redirect(res, "/", 302);
     const ext = path.extname(rel).toLowerCase();
     const headers = { "Content-Type": TYPES[ext] || "application/octet-stream", "X-Content-Type-Options": "nosniff",
       "Referrer-Policy": "strict-origin-when-cross-origin",
-      "Cache-Control": /\.(html|json|xml|txt)$/.test(ext) ? "no-cache" : "public, max-age=86400" };
+      "Cache-Control": /\.(html|json|xml|txt)$/.test(ext) ? "no-cache" : ext === ".woff2" ? "public, max-age=31536000, immutable" : "public, max-age=86400" };
     const gz = /gzip/.test(req.headers["accept-encoding"] || "") && /^(text|application\/(json|xml))/.test(headers["Content-Type"]);
     if (gz) { buf = zlib.gzipSync(buf); headers["Content-Encoding"] = "gzip"; headers["Vary"] = "Accept-Encoding"; }
     headers["Content-Length"] = buf.length;

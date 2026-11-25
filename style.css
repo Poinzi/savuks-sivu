@@ -1,3 +1,6 @@
+/* Fontit omalta palvelimelta (Archivo ja Inter, variable, latin) */
+@font-face{font-family:Archivo;src:url(/fonts/archivo.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:Inter;src:url(/fonts/inter.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
 /* VOICE: asiallinen, luotettava, suora – isännöitsijä ja hallitus lukevat
    IDEA: tarkastuspöytäkirja ja talon poikkileikkaus, jossa jokainen asunto kuitataan
    PICTURE: kerrostalon leikkaus, palovaroitin joka huoneistossa, väestönsuoja kellarissa
@@ -194,3 +197,32 @@ legend{font:700 19px Archivo,Inter,sans-serif;padding:0 8px}
 
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 form button:disabled{opacity:.7;cursor:wait}
+
+/* Palvelusivut */
+.crumbs{font-size:14.5px;color:var(--mute);margin-bottom:18px}
+.crumbs a{color:var(--mute)}
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,64px)}
+.ticks{list-style:none;padding:0;margin:18px 0 0}
+.ticks li{padding:11px 0 11px 32px;border-top:1px solid var(--line);position:relative}
+.ticks li:first-child{border-top:0}
+.ticks li::before{content:"";position:absolute;left:4px;top:17px;width:12px;height:7px;border-left:2.5px solid var(--red);border-bottom:2.5px solid var(--red);transform:rotate(-45deg)}
+.flow{list-style:none;padding:0;margin:18px 0 0;counter-reset:f}
+.flow li{counter-increment:f;position:relative;padding:4px 0 20px 60px;min-height:52px}
+.flow li::before{content:counter(f);position:absolute;left:0;top:0;width:42px;height:42px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font:800 18px Archivo,sans-serif;box-shadow:var(--shr)}
+.flow b{display:block;font:700 18px/1.3 Archivo,Inter,sans-serif}
+.flow span{color:var(--mute)}
+.facts3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px;margin-top:24px}
+.cite{display:block;margin-top:8px;font-size:14px;color:var(--redink)}
+.others{margin-top:28px;color:var(--mute)}
+.others a{color:var(--redink)}
+.card h3 a{text-decoration:none;color:inherit}
+.card h3 a:hover{color:var(--redink)}
+.card .more{margin-top:12px;font-weight:600;color:var(--redink);text-decoration:none}
+@media(max-width:860px){.split{grid-template-columns:minmax(0,1fr)}}
+
+/* Laatutarkistuksen korjaukset */
+h1,h2,h3{overflow-wrap:break-word;hyphens:auto}
+.logo{min-height:44px;display:flex;align-items:center}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.crumbs a{padding:0;display:inline!important;border-radius:0;background:none!important;font-weight:400;font-size:14.5px}
+.crumbs{display:block}
