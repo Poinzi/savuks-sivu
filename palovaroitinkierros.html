@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palovaroitintarkastuksen asukastiedote ja muistilista | Savuks Oy</title>
+<meta name="description" content="Valmistele taloyhtiön palovaroitinkierros. Täytä ja tulosta maksuton asukastiedote sekä käy läpi isännöitsijän muistilista.">
+<link rel="canonical" href="https://www.savuks.fi/palovaroitinkierros.html">
+<link rel="stylesheet" href="/style.css">
+<style>
+.prep-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1rem; margin-block: 1rem; }
+.prep-fields label { display: grid; gap: .25rem; }
+.prep-fields input { width: 100%; min-height: 2.75rem; padding: .5rem; font: inherit; }
+.notice { margin: 1.5rem 0; padding: 1.25rem; border: 1px solid #aaa; overflow-wrap: anywhere; }
+.prep-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+@media print {
+  body, .notice { background: white; color: black; }
+  body > header, body > footer, main > section:first-child, .no-print { display: none !important; }
+  .notice { border: 0; padding: 0; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="data:image/png;base64,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" alt="Savuks Oy" width="500" height="144"></a>
+    <nav aria-label="Päävalikko">
+      <a href="index.html#palvelut">Palvelut</a>
+      <a href="index.html#toimintatapa">Toimintatapa</a>
+      <a href="ajankohtaista.html">Ajankohtaista</a>
+      <a href="index.html#yhteystiedot">Yhteystiedot</a>
+      <a class="cta" href="index.html#yhteystiedot">Pyydä tarjous</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="band pagehead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Murupolku"><a href="/">Etusivu</a> › <a href="/palovaroittimet.html">Palovaroittimet</a></nav>
+    <h1>Palovaroitintarkastuksen asukastiedote ja muistilista</h1>
+    <p class="lead">Valmistele taloyhtiön palovaroitinkierros. Täytä tiedot ja tulosta asukastiedote tai tallenna se PDF-tiedostoksi selaimen tulostusvalikosta.</p>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap">
+    <div class="no-print">
+      <h2>Isännöitsijän muistilista</h2>
+      <ul class="ticks">
+        <li>Sovi tarkastuspäivä ja aikaikkuna tarkastajan kanssa.</li>
+        <li>Sovi, miten asuntoihin päästään ja keneltä asukkaat voivat kysyä käynnistä.</li>
+        <li>Sovi etukäteen, miten puuttuvat tai vanhentuneet varoittimet käsitellään.</li>
+        <li>Jaa asukkaille tieto tarkastusajasta ja asuntoon pääsyn järjestelyistä.</li>
+      </ul>
+      <h2>Täytä asukastiedote</h2>
+      <div class="prep-fields">
+        <label>Taloyhtiön nimi <input id="yhtio" maxlength="120"></label>
+        <label>Tarkastuspäivä <input id="paiva" type="date"></label>
+        <label>Kellonaika tai aikaikkuna <input id="aika" maxlength="80"></label>
+        <label>Asuntoon pääsy ja yhteyshenkilö <input id="ohje" maxlength="240"></label>
+        <label>Asuntojen määrä tarjouspyyntöä varten <input id="maara" type="number" inputmode="numeric" min="1" max="99999" step="1"></label>
+      </div>
+    </div>
+    <article class="notice" aria-label="Tulostettava asukastiedote">
+      <h2>Asukastiedote – palovaroittimien tarkastus</h2>
+      <p>Taloyhtiö <strong id="t-yhtio">________________</strong></p>
+      <p>Tarkastuspäivä <strong id="t-paiva">________________</strong></p>
+      <p>Kellonaika <strong id="t-aika">________________</strong></p>
+      <p>Taloyhtiön asunnoissa tarkastetaan palovaroittimet ilmoitettuna ajankohtana. Noudata alla olevia ohjeita, jotta tarkastaja pääsee asuntoon.</p>
+      <h3>Asuntoon pääsy ja lisätiedot</h3>
+      <p id="t-ohje">________________</p>
+    </article>
+    <div class="prep-actions no-print">
+      <button class="btn p" type="button" id="tulosta">Tulosta asukastiedote</button>
+      <a class="btn" id="tarjous" href="/?palvelu=Palovaroittimet#yhteystiedot">Pyydä tarjous palovaroitinkierroksesta</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© <span id="y">2026</span> Savuks Oy · Y-tunnus 3465682-5 · <a href="turun-seutu.html">Turun seutu</a> · <a href="tarkistuslista.html">Tarkistuslista</a> · <a href="tietosuoja.html">Tietosuojaseloste</a></span>
+    <span>jari.mattila@savuks.fi · www.savuks.fi</span>
+  </div>
+</footer>
+<script>
+  const fields = ["yhtio", "paiva", "aika", "ohje"];
+  const dateField = document.getElementById("paiva");
+  const countField = document.getElementById("maara");
+  const offer = document.getElementById("tarjous");
+  function render() {
+    for (const field of fields) {
+      const value = document.getElementById(field).value.trim();
+      const printable = field === "paiva" && value ? value.split("-").reverse().join(".") : value;
+      document.getElementById("t-" + field).textContent = printable || "________________";
+    }
+    const params = new URLSearchParams({ palvelu: "Palovaroittimet" });
+    if (countField.value && countField.validity.valid) params.set("asunnot", countField.value);
+    if (dateField.value) params.set("toivepaiva", dateField.value);
+    offer.href = "/?" + params + "#yhteystiedot";
+  }
+  for (const field of [...fields, "maara"]) document.getElementById(field).addEventListener("input", render);
+  document.getElementById("tulosta").addEventListener("click", () => { render(); window.print(); });
+  render();
+</script>
+<script src="/lahde.js" defer></script>
+</body>
+</html>
