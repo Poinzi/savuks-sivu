@@ -18,6 +18,7 @@
 - [Väestönsuojat](https://www.savuks.fi/vaestonsuojat.html): laitteiden tarkastus ja huolto (tarkastuspöytäkirja), tiiveyskoe, käyttöönottosuunnitelma (72 tuntia), tarvikkeet ja inventaario – tilattavissa yhdessä tai erikseen
 - [Käsisammuttimet](https://www.savuks.fi/kasisammuttimet.html): kaikkien merkkien määräaikaistarkastukset ja huollot, uusien sammuttimien toimitus (Tukesin rekisteröimä käsisammutinliike)
 - [Pikapalopostit](https://www.savuks.fi/pikapalopostit.html): tarkastus, letkujen koeponnistus ja korjaukset (sovitaan tilaajan kanssa), uudet palopostit
+- [Yrityksille ja toimitiloille](https://www.savuks.fi/yrityksille.html): käsisammuttimet, pikapalopostit, turvavalot, savunpoistot, turvallisuuskartoitus ja pelastussuunnitelma yrityksille ja kiinteistönomistajille
 - [Kaikki palvelut](https://www.savuks.fi/#palvelut): myös savunpoistojen huolto, turvavalojen tarkastus, turvallisuuskartoitus ja pelastussuunnitelma
 
 ## Palvelualue

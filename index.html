@@ -166,6 +166,7 @@
         <ul><li>Laadinta ja päivitys</li></ul>
       </article>
     </div>
+    <p class="others">Palvelemme myös yrityksiä ja toimitiloja: <a href="yrityksille.html">Paloturvallisuus yrityksille →</a></p>
   </div>
 </section>
 
@@ -240,6 +241,7 @@
       <div class="row2">
         <div><label for="palvelu">Palvelu</label>
           <select id="palvelu" name="palvelu">
+            <option>En ole varma</option>
             <option>Palovaroittimet</option>
             <option>Väestönsuojat</option>
             <option>Käsisammuttimet</option>
@@ -250,9 +252,9 @@
             <option>Pelastussuunnitelma</option>
             <option>Useampi palvelu</option>
           </select></div>
-        <div><label for="asunnot">Asuntojen määrä, jos tiedossa</label><input id="asunnot" name="asunnot" inputmode="numeric"></div>
+        <div id="asuntomaara" hidden><label for="asunnot">Asuntojen määrä, jos tiedossa</label><input id="asunnot" name="asunnot" inputmode="numeric"></div>
       </div>
-      <div><label for="viesti">Kohde ja lisätiedot</label><textarea id="viesti" name="viesti" placeholder="Kohteen nimi tai osoite ja toivottu ajankohta"></textarea></div>
+      <div><label for="viesti">Kohde ja lisätiedot</label><textarea id="viesti" name="viesti" placeholder="Kohteen osoite ja mitä tarvitset, jos tiedossa"></textarea></div>
       <div class="hp" aria-hidden="true"><label for="sivusto">Jätä tyhjäksi</label><input id="sivusto" name="sivusto" tabindex="-1" autocomplete="off"></div>
       <button type="submit" id="laheta">Lähetä tarjouspyyntö</button>
       <p id="lomake-tila" role="status"></p>
@@ -264,7 +266,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© <span id="y">2026</span> Savuks Oy · Y-tunnus 3465682-5 · <a href="turun-seutu.html">Turun seutu</a> · <a href="tarkistuslista.html">Tarkistuslista</a> · <a href="tietosuoja.html">Tietosuojaseloste</a></span>
+    <span>© <span id="y">2026</span> Savuks Oy · Y-tunnus 3465682-5 · <a href="turun-seutu.html">Turun seutu</a> · <a href="yrityksille.html">Yrityksille</a> · <a href="tarkistuslista.html">Tarkistuslista</a> · <a href="tietosuoja.html">Tietosuojaseloste</a></span>
     <span>jari.mattila@savuks.fi · www.savuks.fi</span>
   </div>
 </footer>
@@ -295,23 +297,42 @@
   };
   const mailto = () => {
     const body = ["Nimi: " + v("nimi"), "Puhelin: " + v("puh"), "Sähköposti: " + v("email"),
-      "Palvelu: " + v("palvelu"), "Asuntoja: " + v("asunnot"), "", v("viesti")].join("\n");
+      "Palvelu: " + v("palvelu"), ...(apartmentCount() ? ["Asuntoja: " + apartmentCount()] : []), "", v("viesti")].join("\n");
     return "mailto:jari.mattila@savuks.fi?subject=" + encodeURIComponent("Tarjouspyyntö: " + v("palvelu")) + "&body=" + encodeURIComponent(body);
   };
+  const service = document.getElementById("palvelu");
+  const apartmentRow = document.getElementById("asuntomaara");
+  const details = document.getElementById("viesti");
+  const hints = {
+    Palovaroittimet: "Kohteen osoite ja toivottu ajankohta, jos tiedossa",
+    Väestönsuojat: "Kohteen osoite ja mitä suojaan tarvitaan, jos tiedossa",
+    Käsisammuttimet: "Kohteen osoite ja sammuttimien arvioitu määrä, jos tiedossa",
+    Pikapalopostit: "Kohteen osoite ja pikapalopostien arvioitu määrä, jos tiedossa",
+    Turvavalot: "Kohteen osoite ja turvavalojen arvioitu määrä, jos tiedossa",
+    Savunpoistot: "Kohteen osoite ja savunpoistolaitteiden arvioitu määrä, jos tiedossa"
+  };
+  const defaultHint = details.placeholder;
+  const apartmentCount = () => service.value === "Palovaroittimet" ? v("asunnot") : "";
+  const updateForm = () => {
+    apartmentRow.hidden = service.value !== "Palovaroittimet";
+    details.placeholder = hints[service.value] || defaultHint;
+  };
+  service.addEventListener("change", updateForm);
   try {
     const pv = new URLSearchParams(location.search).get("palvelu");
     const sel = document.getElementById("palvelu");
     if (pv && [...sel.options].some((o) => o.text === pv)) sel.value = pv;
   } catch (e) {}
+  updateForm();
   f.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!v("nimi") || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("email"))) { ilmoita("Täytä nimi ja toimiva sähköpostiosoite.", true); return; }
     btn.disabled = true; btn.textContent = "Lähetetään…";
     try {
       const r = await fetch("/api/tarjous", { method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nimi: v("nimi"), email: v("email"), puh: v("puh"), palvelu: v("palvelu"), asunnot: v("asunnot"), viesti: v("viesti"), sivusto: v("sivusto"), gclid: new URLSearchParams(location.search).get("gclid") || "" }) });
+        body: JSON.stringify({ nimi: v("nimi"), email: v("email"), puh: v("puh"), palvelu: v("palvelu"), asunnot: apartmentCount(), viesti: v("viesti"), sivusto: v("sivusto"), gclid: new URLSearchParams(location.search).get("gclid") || "" }) });
       const d = await r.json().catch(() => ({}));
-      if (r.ok && d.ok) { f.reset(); ilmoita("Kiitos! Tarjouspyyntösi on lähetetty. Otamme yhteyttä antamaasi sähköpostiosoitteeseen tai puhelinnumeroon."); }
+      if (r.ok && d.ok) { f.reset(); updateForm(); ilmoita("Kiitos! Tarjouspyyntösi on lähetetty. Otamme yhteyttä antamaasi sähköpostiosoitteeseen tai puhelinnumeroon."); }
       else ilmoita((d.virhe || "Lähetys epäonnistui.") + " Voit myös soittaa +358 44 366 5638.", true, r.status >= 500 ? mailto() : null);
     } catch (err) {
       ilmoita("Lähetys epäonnistui. Voit myös soittaa +358 44 366 5638.", true, mailto());
